@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciasteczka</title>
+    <link rel = "stylesheet" href = "style.css">
+</head>
+<body onload= "checkCookie()">
+    
+    <div>
+        <h1>Witaj, kotki tutaj.</h1>
+        <img src = "sweetkitty.png" class="kitty">
+        <img src = "angrykitty.png" class="kitty">
+        <img src = "sadkitty.png" class="kitty">
+        <img src = "happykitty.png" class="kitty">
+
+
+
+    </div>
+
+    <div id = "cookies">
+        <h2>Witaj!</h2>
+        <h3>Akceptujesz ciasteczka na naszej stronie?</h3>
+        Czym są ciasteczka?
+        <br>
+        Ciasteczka (pliki cookies) to niewielkie informacje, które wykorzystywane są przez nas w celu ułatwienia Ci korzystania z naszej strony.
+        Pliki cookies pozwalają nam zapamiętać twoje preferencje, dzięki czemu twoja następna wizyta będzie przyjemniejsza.
+        <br>
+        <button id = "accept" onclick = "accept()">Akceptuje</button>
+        <button id = "decline" onclick = "decline()">Odmawiam</button>
+    </div>
+
+    <script>
+        
+        function accept() {
+            document.cookie = "cookieAccept=true";
+            document.getElementById("cookies").style.display = "none";
+        };
+
+        function decline() {
+            document.cookie = "cookieAccept=false";
+        };
+
+        function getcookies(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(`;`).shift();
+        };
+
+        function checkCookie() {
+            if(getcookies("cookieAccept") == "true") {
+                document.getElementById("cookies").style.display = "none";
+            };
+        }; 
+
+
+
+
+
+    </script>
+
+
+
+</body>
+</html>
